@@ -2,6 +2,8 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: "{{ template "neo4j.replica.fullname" . }}"
+  annotations:
+    sidecar.istio.io/inject: "false"
   labels:
     heritage: {{ .Release.Service | quote }}
     release: {{ .Release.Name | quote }}

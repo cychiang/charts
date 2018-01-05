@@ -2,6 +2,9 @@ apiVersion: "apps/v1beta1"
 kind: StatefulSet
 metadata:
   name: "{{ template "neo4j.core.fullname" . }}"
+  annotations:
+    sidecar.istio.io/inject: "false"
+
 spec:
   serviceName: {{ template "neo4j.fullname" . }}
   replicas: {{ .Values.core.numberOfServers }}
